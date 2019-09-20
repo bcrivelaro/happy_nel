@@ -1,0 +1,11 @@
+.circleci
+.git
+/tmp/*
+/log/*
+*.md
+Dockerfile
+docker-compose.yml
+.env
+.env.sample
+/coverage/*
+/node_modules

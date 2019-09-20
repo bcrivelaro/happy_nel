@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['PGHOST'] %>
+  username: postgres
+  pool: 5
+
+development:
+  <<: *default
+  database: happy_nel_development
+
+test:
+  <<: *default
+  database: happy_nel_test
