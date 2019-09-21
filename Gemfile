@@ -25,8 +25,6 @@ gem 'slim-rails', '3.2.0'
 gem 'will_paginate-bootstrap4', '0.2.2'
 # https://github.com/plataformatec/devise
 gem 'devise', '4.7.1'
-# https://github.com/hisea/devise-bootstrap-views
-gem 'devise-bootstrap-views', '1.1.0'
 # https://github.com/mperham/sidekiq/
 gem 'sidekiq', '6.0.0'
 
@@ -57,7 +55,11 @@ group :development do
   # https://github.com/flyerhzm/bullet
   gem 'bullet', '6.0.2'
   # https://github.com/tigrish/devise-i18n
-  gem 'devise-i18n', '1.8.2'
+  gem 'devise-i18n', '1.8.1'
+  # https://github.com/hisea/devise-bootstrap-views
+  gem 'devise-bootstrap-views', '1.1.0'
+  # https://github.com/slim-template/html2slim
+  gem 'html2slim', '0.2.0'
 end
 
 group :test do

@@ -1,11 +1,15 @@
 doctype html
 html
   head
-    title
-      | HappyNel
+    title HappyNel
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    header
+      = render partial: 'layouts/navbar'
+    main
+      = render partial: 'layouts/messages', flash: flash
+      .container
+        = yield
