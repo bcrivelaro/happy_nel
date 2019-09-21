@@ -2,6 +2,7 @@ class Survey < ApplicationRecord
   enum status: { running: 'running', finished: 'finished' }
 
   belongs_to :admin
+  has_many :survey_tokens
 
   validates :question, presence: true
   validates :status, inclusion: { in: Survey.statuses.keys }

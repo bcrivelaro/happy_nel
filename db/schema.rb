@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_213032) do
+ActiveRecord::Schema.define(version: 2019_09_21_231926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,17 @@ ActiveRecord::Schema.define(version: 2019_09_21_213032) do
     t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id", "email"], name: "index_members_on_admin_id_and_email", unique: true
     t.index ["admin_id"], name: "index_members_on_admin_id"
+  end
+
+  create_table "survey_tokens", force: :cascade do |t|
+    t.bigint "survey_id"
+    t.string "token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_survey_tokens_on_survey_id"
+    t.index ["token"], name: "index_survey_tokens_on_token", unique: true
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -49,5 +59,6 @@ ActiveRecord::Schema.define(version: 2019_09_21_213032) do
   end
 
   add_foreign_key "members", "admins"
+  add_foreign_key "survey_tokens", "surveys"
   add_foreign_key "surveys", "admins"
 end
