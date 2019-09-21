@@ -13,32 +13,33 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
-
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+# https://github.com/roidrage/lograge
+gem 'lograge', '0.11.2'
+# https://github.com/slim-template/slim
+gem 'slim', '4.0.1'
+# https://github.com/slim-template/slim-rails
+gem 'slim-rails', '3.2.0'
+# https://github.com/delef/will_paginate-bootstrap4
+gem 'will_paginate-bootstrap4', '0.2.2'
+# https://github.com/plataformatec/devise
+gem 'devise', '4.7.1'
+# https://github.com/hisea/devise-bootstrap-views
+gem 'devise-bootstrap-views', '1.1.0'
+# https://github.com/mperham/sidekiq/
+gem 'sidekiq', '6.0.0'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # https://github.com/rspec/rspec-rails
+  gem 'rspec-rails', '3.8.2'
+  # https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails', '5.0.2'
+  # https://github.com/thoughtbot/shoulda-matchers
+  gem 'shoulda-matchers', '4.1.2'
+  gem 'rails-controller-testing', '1.0.4'
+  # https://github.com/rweng/pry-rails
+  gem 'pry-rails', '0.3.9'
 end
 
 group :development do
@@ -48,6 +49,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # https://github.com/colszowka/simplecov
+  gem 'simplecov', '0.17.0', require: false
+  # https://github.com/BetterErrors/better_errors
+  gem 'better_errors', '2.5.1'
+  gem 'binding_of_caller', '0.8.0'
+  # https://github.com/flyerhzm/bullet
+  gem 'bullet', '6.0.2'
+  # https://github.com/tigrish/devise-i18n
+  gem 'devise-i18n', '1.8.2'
 end
 
 group :test do
@@ -57,6 +67,3 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
