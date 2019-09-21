@@ -1,0 +1,82 @@
+version: 2
+jobs:
+  build:
+    parallelism: 3
+    docker:
+      - image: circleci/ruby:2.6.3-node
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: posstgres
+          RAILS_ENV: test
+      - image: circleci/postgres:11.4-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: happy_nel
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+
+      # Which version of bundler?
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - rails-simple-trip-planner-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-simple-trip-planner-bundle-v2-
+
+      - run:
+          name: Bundle Install
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      # Store bundle cache
+      - save_cache:
+          key: rails-simple-trip-planner-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # Only necessary if app uses webpacker or yarn in some other way
+      - restore_cache:
+          keys:
+            - rails-simple-trip-planner-yarn-{{ checksum "yarn.lock" }}
+            - rails-simple-trip-planner-yarn-
+
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: rails-simple-trip-planner-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bin/rails db:create && bin/rails db:schema:load --trace
+
+      - run:
+          command: |
+            echo $(circleci tests glob "spec/**/*_spec.rb")
+            echo $(circleci tests split --split-by=timings)
+      # Run rspec in parallel
+      - run:
+          name: Run rspec in parallel
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      # Save test results for timing analysis
+      - store_test_results:
+          path: test_results

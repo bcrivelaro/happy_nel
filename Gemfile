@@ -68,4 +68,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # https://github.com/sj26/rspec_junit_formatter
+  gem 'rspec_junit_formatter', '0.4.1'
 end
