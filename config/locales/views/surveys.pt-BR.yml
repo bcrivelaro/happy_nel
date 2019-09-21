@@ -1,0 +1,12 @@
+pt-BR:
+  surveys:
+    index:
+      surveys: Pesquisas
+      new: Nova
+      question: Pergunta
+      status: Estado
+      members_count: Qtd. membros
+      answer_count: Qtd. respostas
+      average_rating: Nota média
+    new:
+      new_survey: Nova pesquisa

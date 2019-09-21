@@ -2,4 +2,5 @@ pt-BR:
   layouts:
     navbar:
       members: Membros
+      surveys: Pesquisas
       sign_out: Sair

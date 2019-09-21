@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
 
   resources :members, except: :show
+  resources :surveys, only: %i[index new create]
 end

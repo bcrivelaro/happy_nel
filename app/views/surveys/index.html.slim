@@ -1,0 +1,24 @@
+h2.display-inline= t('.surveys')
+.float-right
+  .btn-group
+    = link_to t('.new'), new_survey_path, class: 'btn btn-primary'
+hr
+
+table.table
+  thead.thead-dark
+    tr
+      th= t('.question')
+      th= t('.status')
+      th= t('.members_count')
+      th= t('.answer_count')
+      th= t('.average_rating')
+  tbody
+    - @surveys.each do |survey|
+      tr
+        td= survey.question
+        td= status_badge(survey)
+        td= survey.members_count
+        td= survey.answer_count
+        td= survey.average_rating
+
+= will_paginate @surveys, list_classes: %w(pagination justify-content-center)

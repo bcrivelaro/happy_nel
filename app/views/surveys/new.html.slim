@@ -1,0 +1,12 @@
+.row.justify-content-center
+  .col-6
+    h2= t('.new_survey')
+
+    = render 'shared/errors', obj: @survey
+
+    = form_for(@survey, html: { class: 'form-horizontal', role: 'form' }) do |f|
+      .form-group
+        = f.label :question
+        = f.text_field :question, class: 'form-control'
+      br
+      = f.submit class: 'btn btn-primary'

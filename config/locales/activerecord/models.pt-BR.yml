@@ -7,3 +7,6 @@ pt-BR:
       member:
         one: membro
         many: membros
+      survey:
+        one: pesquisa
+        many: pesquisas
