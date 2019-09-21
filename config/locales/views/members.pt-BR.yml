@@ -1,0 +1,14 @@
+pt-BR:
+  members:
+    index:
+      members: Membros
+      new: Novo
+      name: Nome
+      email: Email
+      actions: Ações
+      edit: Alterar
+      delete: Excluir
+    edit:
+      edit_member: Alterar membro
+    new:
+      new_member: Novo membro

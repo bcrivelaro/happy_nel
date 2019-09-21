@@ -1,0 +1,8 @@
+pt-BR:
+  members:
+    create:
+      success: Membro criado com sucesso!
+    update:
+      success: Membro atualizado com sucesso!
+    destroy:
+      success: Membro excluído com sucesso!

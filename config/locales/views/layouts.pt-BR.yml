@@ -1,0 +1,5 @@
+pt-BR:
+  layouts:
+    navbar:
+      members: Membros
+      sign_out: Sair

@@ -1,0 +1,26 @@
+h2.display-inline= t('.members')
+.float-right
+  .btn-group
+    = link_to t('.new'), new_member_path, class: 'btn btn-primary'
+hr
+
+table.table
+  thead.thead-dark
+    tr
+      th= t('.name')
+      th= t('.email')
+      th= t('.actions')
+  tbody
+    - @members.each do |member|
+      tr
+        td= member.name
+        td= member.email
+        td
+          .btn-group.btn-group-sm
+            = link_to t('.edit'), edit_member_path(member),
+                                  class: 'btn btn-primary'
+            = link_to t('.delete'), member_path(member), method: :delete,
+                                    data: { confirm: t('.are_you_sure?') },
+                                    class: 'btn btn-danger'
+
+= will_paginate @members, list_classes: %w(pagination justify-content-center)

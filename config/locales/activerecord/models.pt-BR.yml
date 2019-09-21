@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      admin:
+        one: administrador
+        many: administradores
+      member:
+        one: membro
+        many: membros
