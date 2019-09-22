@@ -60,6 +60,10 @@ group :development do
   gem 'devise-bootstrap-views', '1.1.0'
   # https://github.com/slim-template/html2slim
   gem 'html2slim', '0.2.0'
+  # https://github.com/ryanb/letter_opener
+  gem 'letter_opener', '1.7.0'
+  # https://github.com/fgrehm/letter_opener_web
+  gem 'letter_opener_web', '1.3.4'
 end
 
 group :test do

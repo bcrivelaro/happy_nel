@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   resources :members, except: :show
   resources :surveys, only: %i[index new create]
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

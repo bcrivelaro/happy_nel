@@ -1,5 +1,5 @@
 class Survey < ApplicationRecord
-  enum status: { running: 'running', finished: 'finished' }
+  enum status: { running: 'running'.freeze, finished: 'finished'.freeze }
 
   belongs_to :admin
   has_many :survey_tokens
