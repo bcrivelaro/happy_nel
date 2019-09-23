@@ -1,6 +1,6 @@
 pt-BR:
   surveys:
     create:
-      success: Pesquisa criado com sucesso!
+      success: Pesquisa criada com sucesso!
     new:
       you_need_members_to_create_surveys: Você precisa ter ao menos um membro para criar uma pesquisa!
