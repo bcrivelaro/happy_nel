@@ -5,4 +5,5 @@ p= t('survey_mailer.notify_member.you_were_invited_to_answer_a_survey')
 p= @survey_token.survey.question
 
 = link_to t('survey_mailer.notify_member.click_here_to_answer'),
-          answer_url(host: ENV['HOST'], token: @survey_token.token)
+          answer_url(host: ENV.fetch('HOST'), 'localhost:3000',
+                     token: @survey_token.token)
