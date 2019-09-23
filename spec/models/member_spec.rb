@@ -1,6 +1,7 @@
 RSpec.describe Member, type: :model do
   describe 'associations' do
     it { should belong_to(:admin) }
+    it { should have_and_belong_to_many(:surveys) }
   end
 
   describe 'validations' do

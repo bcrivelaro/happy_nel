@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_231926) do
+ActiveRecord::Schema.define(version: 2019_09_23_113315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,16 @@ ActiveRecord::Schema.define(version: 2019_09_21_231926) do
     t.index ["admin_id"], name: "index_members_on_admin_id"
   end
 
+  create_table "members_surveys", id: false, force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "survey_id", null: false
+    t.index ["member_id", "survey_id"], name: "index_members_surveys_on_member_id_and_survey_id", unique: true
+  end
+
   create_table "survey_tokens", force: :cascade do |t|
     t.bigint "survey_id"
     t.string "token", null: false
+    t.datetime "used_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_survey_tokens_on_survey_id"
@@ -50,7 +57,6 @@ ActiveRecord::Schema.define(version: 2019_09_21_231926) do
     t.bigint "admin_id"
     t.string "question", null: false
     t.string "status", default: "running", null: false
-    t.integer "members_count", null: false
     t.integer "answer_count", default: 0, null: false
     t.decimal "average_rating", precision: 4, scale: 2, default: "0.0", null: false
     t.datetime "created_at", null: false

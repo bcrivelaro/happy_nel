@@ -10,3 +10,6 @@ pt-BR:
       survey:
         one: pesquisa
         many: pesquisas
+      survey_token:
+        one: token de pesquisa
+        many: tokens de pesquisa

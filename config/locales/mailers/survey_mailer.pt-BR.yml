@@ -1,0 +1,11 @@
+pt-BR:
+  survey_mailer:
+    notify_member:
+      subject: Pesquisa
+      hi: Olá
+      you_were_invited_to_answer_a_survey: 'você foi convidado à responder uma pesquisa:'
+      click_here_to_answer: Clique aqui para responder.
+    finished_survey:
+      subject: Pesquisa finalizada
+      hi: Olá
+      survey_average_is: a nota média final da pesquisa é

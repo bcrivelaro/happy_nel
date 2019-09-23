@@ -1,0 +1,11 @@
+.row.justify-content-center
+  .col-6
+    h2= @survey_token.survey.question
+
+    = form_tag(answer_path, html: { class: 'form-horizontal', role: 'form' }) do |f|
+      = hidden_field_tag :token, params[:token]
+
+      .form-group
+        = select_tag :answer, options_for_select(0..10), class: 'form-control'
+      br
+      = submit_tag t('.submit'), class: 'btn btn-primary'

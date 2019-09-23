@@ -19,12 +19,20 @@ pt-BR:
       survey:
         question: Pergunta
         status: Estado
-        running: Aguardando avaliações
+        running: Aguardando respostas
         finished: Finalizada
-        members_count: Total de membros
         answer_count: Total de respostas
         average_rating: Nota média
         admin: Administrador
         admin_id: Administrador
+        members: Membros
+        members_id: Membro
+        created_at: *created_at
+        updated_at: *updated_at
+      survey_token:
+        survey_id: Pesquisa
+        survey: Pesquisa
+        token: Token
+        used_at: Usado em
         created_at: *created_at
         updated_at: *updated_at

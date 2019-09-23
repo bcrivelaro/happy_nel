@@ -18,10 +18,20 @@ RSpec.describe CreateSurvey do
     end
 
     context 'valid' do
-      before { create_list :member, 2, admin: admin }
-      subject { CreateSurvey.new(admin, valid_params).save }
+      let(:service) { CreateSurvey.new(admin, valid_params) }
+      subject { service.save }
+      before do
+        expect(BroadcastNewSurvey).to receive(:call) { true }
+        create_list :member, 2, admin: admin
+      end
 
       it { expect { subject }.to change { admin.surveys.count }.by(1) }
+
+      it 'associate survey with admin current members' do
+        service.save
+
+        expect(service.survey.members.count).to eq(2)
+      end
     end
   end
 end

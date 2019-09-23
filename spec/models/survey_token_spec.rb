@@ -13,4 +13,20 @@ RSpec.describe SurveyToken, type: :model do
       expect(survey_token.token).to be_present
     end
   end
+
+  describe '#can_be_used?' do
+    subject { survey_token.can_be_used? }
+
+    context 'when used at is nil' do
+      let(:survey_token) { build :survey_token, used_at: nil }
+
+      it { is_expected.to be(true) }
+    end
+
+    context 'when used at is present' do
+      let(:survey_token) { build :survey_token, used_at: 1.day.ago }
+
+      it { is_expected.to be(false) }
+    end
+  end
 end

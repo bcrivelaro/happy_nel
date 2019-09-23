@@ -13,7 +13,7 @@ class CreateSurvey
     return unless @survey.valid?
 
     @survey.save!
-    broadcast_survey!
+    BroadcastNewSurvey.call(@survey)
   end
 
   private
@@ -21,13 +21,6 @@ class CreateSurvey
   attr_reader :admin, :question
 
   def survey_params
-    { question: question, members_count: admin.members.count, status: :running }
-  end
-
-  def broadcast_survey!
-    @survey.admin.members.map do |member|
-      token = SurveyToken.create!(survey: survey).token
-      SurveyMailer.notify_member(member, token).deliver_now
-    end
+    { question: question, status: :running, members: admin.members }
   end
 end

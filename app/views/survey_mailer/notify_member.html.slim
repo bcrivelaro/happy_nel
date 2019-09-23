@@ -1,5 +1,8 @@
-h1= t('.hi')
+p #{t('survey_mailer.notify_member.hi')} #{@member.name},
 
-p= t('.you_were_invited_to_answer_a_survey')
+p= t('survey_mailer.notify_member.you_were_invited_to_answer_a_survey')
 
-= link_to t('.click_here_to_answer'), root_url
+p= @survey_token.survey.question
+
+= link_to t('survey_mailer.notify_member.click_here_to_answer'),
+          answer_url(host: ENV['HOST'], token: @survey_token.token)

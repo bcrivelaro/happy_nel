@@ -3,6 +3,10 @@ class SurveyToken < ApplicationRecord
 
   before_validation :generate_token, on: :create
 
+  def can_be_used?
+    used_at.nil?
+  end
+
   private
 
   def generate_token

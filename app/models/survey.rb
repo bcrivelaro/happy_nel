@@ -3,12 +3,10 @@ class Survey < ApplicationRecord
 
   belongs_to :admin
   has_many :survey_tokens
+  has_and_belongs_to_many :members
 
   validates :question, presence: true
   validates :status, inclusion: { in: Survey.statuses.keys }
-  validates :members_count,
-            presence: true,
-            numericality: { only_integer: true, greater_than: 0 }
   validates :answer_count,
             presence: true,
             numericality: { only_integer: true }
