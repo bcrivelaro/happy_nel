@@ -8,6 +8,7 @@ pt-BR:
       actions: Ações
       edit: Alterar
       delete: Excluir
+      are_you_sure?: Você tem certeza?
     edit:
       edit_member: Alterar membro
     new:
