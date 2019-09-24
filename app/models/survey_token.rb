@@ -1,5 +1,5 @@
 class SurveyToken < ApplicationRecord
-  belongs_to :survey
+  belongs_to :survey, counter_cache: true
 
   before_validation :generate_token, on: :create
 

@@ -1,6 +1,6 @@
 RSpec.describe SurveyToken, type: :model do
   describe 'associations' do
-    it { should belong_to(:survey) }
+    it { should belong_to(:survey).counter_cache(true) }
   end
 
   describe 'callbacks' do
